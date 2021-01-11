@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 08171ec4dad974f43b31b010e11c4425
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - AliveCell: {fileID: 7114997056260358958, guid: 29d83222a6a6ab8429dc6c4aa260ce01, type: 3}
+  - DeadCell: {fileID: 3782128702632874655, guid: cf2f60d3aaee59040a1bb9d0688cf0f0, type: 3}
+  - ManipulateGrid: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
