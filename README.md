@@ -3,7 +3,7 @@
 ### Conway´s Game of Life
 
 Explanation of Conway´s game of life can be found on
-[Link for wikipedia article][1]
+[Link for wikipedia article](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 Basic are also provided bellow - copied and with (mostly)bad comments 
 Cell itself doesn't count for its following state
@@ -50,4 +50,3 @@ Software_Project
         |       
         \---Scripts     Folder with scripts
 ```
-[1]: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
