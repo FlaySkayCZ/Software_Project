@@ -1,6 +1,7 @@
 # Software_Project
 ```
 Project for my course on University Was builded only for windows
+
 Conway´s Game of Life
 
 Explanation of Conway´s game of life can be found on
@@ -11,8 +12,7 @@ Cell itself doesn't count for its following state
 ```
 ----------------------------------------------------------------------------------------------
 # Rules
-```
-For Alive cells rules are:
+#####For Alive cells rules are:
 
 Any live cell with fewer than two live neighbours dies, as if by underpopulation. 
 *1 Neigbour = death
@@ -23,16 +23,16 @@ Any live cell with two or three live neighbours lives on to the next generation.
 
 Any live cell with more than three live neighbours dies, as if by overpopulation.
 *4 to 8 Neigbours = Death
-```
+
 ----------------------------------------------------------------------------------------------
-```
-For Death cells rules are:
+
+#####For Death cells rules are:
 
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 *3 Neigbours = Life
 *Anything else stayes dead
-```
+
 ----------------------------------------------------------------------------------------------
 # Folder tree
 ```
