@@ -8,7 +8,7 @@ Explanation of Conway´s game of life can be found on
 Basic are also provided bellow - copied and with (mostly)bad comments 
 Cell itself doesn't count for its following state
 
-----------------------------------------------------------------------------------------------
+
 # Rules
 ##### For Alive cells rules are:
 
@@ -22,7 +22,6 @@ Cell itself doesn't count for its following state
 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
   * 4 to 8 Neigbours = Death
 
-----------------------------------------------------------------------------------------------
 
 ##### For Death cells rules are:
 
@@ -31,7 +30,7 @@ Cell itself doesn't count for its following state
   * 3 Neigbours = Life
   * Anything else stayes dead
 
-----------------------------------------------------------------------------------------------
+
 # Folder tree
 ```
 Software_Project
