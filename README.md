@@ -1,6 +1,7 @@
 # Software_Project
-Project for my course on University
-Was builded only for windows
+```
+Project for my course on University Was builded only for windows
+
 I know there shouldn't be .exe file on GitHub nevertheless for ease of use during exam folder was added 
 
 
@@ -11,8 +12,9 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 Basic are also provided bellow - copied and with (mostly)bad comments 
 Cell itself doesn't count for its following state
-
+```
 ----------------------------------------------------------------------------------------------
+```
 For Alive cells rules are:
 
 #Any live cell with fewer than two live neighbours dies, as if by underpopulation. 
@@ -24,17 +26,18 @@ For Alive cells rules are:
 
 #Any live cell with more than three live neighbours dies, as if by overpopulation.
 4 to 8 Neigbours = Death
-
+```
 ----------------------------------------------------------------------------------------------
+```
 For Death cells rules are:
 
 #Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 3 Neigbours = Life
 Else stayes dead
-
+```
 ----------------------------------------------------------------------------------------------
-
+```
 Software_Project
 |   
 +---Build
@@ -50,3 +53,4 @@ Software_Project
         +---Scenes      Folder with both scenes which are shown in game
         |       
         \---Scripts     Folder with scripts
+```
