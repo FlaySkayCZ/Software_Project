@@ -1,5 +1,5 @@
 # Software_Project
-```
+
 ### Conway´s Game of Life
 
 Explanation of Conway´s game of life can be found on
@@ -7,7 +7,7 @@ Explanation of Conway´s game of life can be found on
 
 Basic are also provided bellow - copied and with (mostly)bad comments 
 Cell itself doesn't count for its following state
-```
+
 ----------------------------------------------------------------------------------------------
 # Rules
 ##### For Alive cells rules are:
