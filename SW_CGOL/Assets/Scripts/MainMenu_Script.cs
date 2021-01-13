@@ -6,20 +6,27 @@ public class MainMenu_Script : MonoBehaviour
 {
     public GameObject AliveCell;
     public GameObject DeadCell;
-
+    /// <summary>
+    /// Method that handles transition to game screen
+    /// /// </summary>
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Debug.Log("Application is moving to scene +1...");
-    }
 
+    }
+    /// <summary>
+    /// Method that calls Options menu
+    /// Opening is set up in Unity 
+    /// </summary>
     public void OptionsMenu()
     {
         Debug.Log("Application opened options...");
     }
-
+    /// <summary>
+    /// Method that handles changing color to Cells
+    /// 
+    /// </summary>
     public Dropdown Dropdown_color;
-
     public void ChangeColor()
     {
         switch (Dropdown_color.value)
@@ -53,7 +60,11 @@ public class MainMenu_Script : MonoBehaviour
                 break;
         };
     }
-
+    /// <summary>
+    /// Method that handles closing the application
+    /// !Only works in builded version 
+    /// For editor there is Log Message
+    /// </summary>
     public void Quit()
     {
         Debug.Log("Application is closing...");

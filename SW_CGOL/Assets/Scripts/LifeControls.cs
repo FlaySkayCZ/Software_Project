@@ -4,6 +4,11 @@ using UnityEngine.EventSystems;
 
 public class LifeControls : MonoBehaviour
 {
+    /// <summary>
+    /// Method that handles clicking on Cell
+    /// If cell is alive clicking changes state to dead
+    /// If cell is dead clicking changes state to alive
+    /// </summary>
     public void OnClick()
     {
         string XY;

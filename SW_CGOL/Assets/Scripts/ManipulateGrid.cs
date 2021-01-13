@@ -2,6 +2,16 @@
 
 public class ManipulateGrid : MonoBehaviour
 {
+    /// <summary>
+    /// rows = number
+    /// </summary>
+    /// <param name="rows">Number of rows</param>
+    /// <param name="clos">Number of cols</param>
+    /// <param name="tileSize">Size of cell</param>
+    /// <param name="happened">Checks if it is first load</param>
+    /// <param name="AliveCell">Game object of Alive cell prefab</param>
+    /// <param name="DeadCell">Game object of Dead cell prefab</param>
+    /// <param name="_states">Board array in [rows,cols] = State of cell </param>
     public static int rows = 43;
     public static int cols = 68;
     private float tileSize = 24;
@@ -9,13 +19,14 @@ public class ManipulateGrid : MonoBehaviour
     public GameObject AliveCell;
     public GameObject DeadCell;
     public bool[,] _states = new bool[rows, cols];
-
-    private void Start()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    public void GridGenerate(bool[,] state)
     {
-    }
-
-    public int GridGenerate(bool[,] state)
-    {
+        //After each change destroy unwanted cells
         if (happened == true)
         {
             foreach (var gameObj in FindObjectsOfType(typeof(GameObject)) as GameObject[])
@@ -31,28 +42,37 @@ public class ManipulateGrid : MonoBehaviour
                 }
             }
         }
-
+        //Checks for position of GridManipulator which is same as board
         float gridX = GameObject.Find("GridManipulator").transform.position.x;
         float gridY = GameObject.Find("GridManipulator").transform.position.y;
-        int savage = state.GetLength(0);
-        int xaxa = state.GetLength(1);
+        //Nested loop which creates all dead or alive cells
+        //State of cells depends on bool value of array with X and Y pos of cell
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
                 if (state[i, j] == false)
                 {
+                    //If state was false it creates alive cell
                     GameObject tile = (GameObject)Instantiate(DeadCell, transform);
+                    //posX & posY are calculated position of next cell to generate
+                    //gridX/gridY is posiiton of board on screen
+                    //i/j are number of position of cell
+                    //we need to subtract i from position because our starting position on board is top left
+                    //tile size is size of cell by how much we need to move it
+                    //we ofset the positions by 1/2 of tile size because cells are generated in center of grid and we want create them form left top corner
+                    // magical values of +2 or -2 on end of equation are for offseting whole grid and making it look nicer - not mandatory
                     float posX = gridX + j * tileSize + tileSize / 2 + 2;
                     float posY = gridY - i * tileSize - tileSize / 2 - 2;
+                    //tile. is assigning various parameters
                     tile.name = ("Cell_Dead:" + i + "." + j);
                     tile.transform.position = new Vector2(posX, posY);
                     tile.transform.SetParent(GameObject.Find("GridManipulator").transform);
                 }
                 else if (state[i, j] == true)
                 {
+                    //Same as above
                     GameObject tile = Instantiate(AliveCell, transform);
-
                     float posX = gridX + j * tileSize + tileSize / 2 + 2;
                     float posY = gridY - i * tileSize - tileSize / 2 - 2;
                     tile.name = ("Cell_Alive:" + i + "." + j);
@@ -62,45 +82,40 @@ public class ManipulateGrid : MonoBehaviour
             }
         }
         happened = true;
-        return 1;
     }
-
+    /// <summary>
+    /// Method which counts alive neighbours on board
+    /// </summary>
+    /// <param name="x">Place in array/board</param>
+    /// <param name="y">Place in array/board</param>
+    /// <returns>Returns number of alive neighbours and evaluates next state</returns>
     public static int countLiveNeighbors(int x, int y)
     {
-        bool loopEdges = true;
+
         GameObject gameObject = GameObject.Find("GameObject");
         ManipulateGrid manipulateGrid = gameObject.GetComponent<ManipulateGrid>();
-        // The number of live neighbors.
-        int value = 0;
-
-        // This nested loop enumerates the 9 cells in the specified cells neighborhood.
+        // Amount of alive neigbours
+        int numberOfNeigbors = 0;
+        // If we thnik about board looping around itself
+        bool loopEdges = true;
         for (var j = -1; j <= 1; j++)
         {
-            //If loopEdges is set to false and y+j is off the board, continue.
             if (!loopEdges && y + j < 0 || y + j >= cols)
             {
                 continue;
             }
-
-            // Loop around the edges if y+j is off the board.
             int k = (y + j + cols) % cols;
-
             for (var i = -1; i <= 1; i++)
             {
-                // If loopEdges is set to false and x+i is off the board, continue.
                 if (!loopEdges && x + i < 0 || x + i >= rows)
                 {
                     continue;
                 }
-
-                // Loop around the edges if x+i is off the board.
                 int h = (x + i + rows) % rows;
 
-                // Count the neighbor cell at (h,k) if it is alive.
-                value += manipulateGrid._states[h, k] ? 1 : 0;
+                numberOfNeigbors += manipulateGrid._states[h, k] ? 1 : 0;
             }
-            // Subtract 1 if (x,y) is alive since we counted it as a neighbor.
         }
-        return value - (manipulateGrid._states[x, y] ? 1 : 0);
+        return numberOfNeigbors - (manipulateGrid._states[x, y] ? 1 : 0);
     }
 }

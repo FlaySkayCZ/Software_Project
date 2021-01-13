@@ -4,18 +4,28 @@ using UnityEngine.UI;
 
 public class GameMenu_Script : MonoBehaviour
 {
+    /// <summary>
+    /// Method that handles returning to menu
+    /// On click it moves us to previous Scene
+    /// We move to previous and not to specific cene because it is better practise
+    /// </summary>
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-
+    /// <summary>
+    /// Method that handles creating empty grid
+    /// </summary>
     public void Generate()
     {
         GameObject gameObject = GameObject.Find("GameObject");
         ManipulateGrid manipulateGrid = gameObject.GetComponent<ManipulateGrid>();
         manipulateGrid.GridGenerate(CleanPlane());
     }
-
+    /// <summary>
+    /// Method that cleans array and sets every cell to empty
+    /// </summary>
+    /// <returns>CleanState is empty grid</returns>
     private bool[,] CleanPlane()
     {
         GameObject gameObject = GameObject.Find("GameObject");
@@ -30,9 +40,11 @@ public class GameMenu_Script : MonoBehaviour
         }
         return CleanState;
     }
-
+    /// <summary>
+    /// Method that handles loading presets from dropdown menu
+    /// First we load grid script and then we simply check which case is selected and send preconfigured array for gereration
+    /// </summary>
     public Dropdown menu_Dropdown;
-
     public void loadPreset()
     {
         GameObject gameObject = GameObject.Find("GameObject");
@@ -53,7 +65,10 @@ public class GameMenu_Script : MonoBehaviour
                 break;
         };
     }
-
+    /// <summary>
+    /// Method that stores data for so-called Cloverleaf which repeats itself
+    /// </summary>
+    /// <returns>returns filled array</returns>
     private bool[,] Cloverleaf()
     {
         GameObject gameObject = GameObject.Find("GameObject");
@@ -108,7 +123,10 @@ public class GameMenu_Script : MonoBehaviour
         manipulateGrid._states[23, 32] = true;
         return manipulateGrid._states;
     }
-
+    /// <summary>
+    /// Method that stores data for four so-called gliders which fly to two coliding spaces and create self sustaining 2x2 squares
+    /// </summary>
+    /// <returns>returns filled array</returns>
     private bool[,] GliderSet()
     {
         GameObject gameObject = GameObject.Find("GameObject");
@@ -143,7 +161,10 @@ public class GameMenu_Script : MonoBehaviour
         manipulateGrid._states[41, 65] = true;
         return manipulateGrid._states;
     }
-
+    /// <summary>
+    ///  Method that stores data for Smiley Face which is pretty neat. After 32 iterations it changes to flower which repeaits itself in 3 iteration cycle
+    /// </summary>
+    /// <returns>returns filled array</returns>
     public bool[,] SmileySet()
     {
         GameObject gameObject = GameObject.Find("GameObject");
