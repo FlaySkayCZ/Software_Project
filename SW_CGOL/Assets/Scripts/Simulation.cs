@@ -5,7 +5,7 @@ using UnityEngine;
 public class Simulation : MonoBehaviour
 {
     public bool SimRun = false;
-    private int Done;
+    private int loopHappened;
     /// <summary>
     /// Method that handles starting and stopping the game
     /// It changes own text depending on state of game
@@ -36,6 +36,8 @@ public class Simulation : MonoBehaviour
         //does until coroutine stops
         do
         {
+
+        
             GameObject gameObject = GameObject.Find("GameObject");
             ManipulateGrid manipulateGrid = gameObject.GetComponent<ManipulateGrid>();
             //Creates newBoard which is copy of shown board so it doesnt mess with calculation when i am assinging new values
@@ -60,11 +62,12 @@ public class Simulation : MonoBehaviour
                     manipulateGrid._states[row, col] = newBoard[row, col];
                 }
             }
-            //calls new generation of grid
-            manipulateGrid.GridGenerate(manipulateGrid._states);
-            yield return new WaitUntil(() => Done == 1);
-
-            Done = 0;
+            //May be needed. Testing required.
+            //loopHappened = manipulateGrid.GridGenerate(manipulateGrid._states);
+            // Here it waits until generation metod returns 1 
+            yield return new WaitUntil(() => manipulateGrid.GridGenerate(manipulateGrid._states) == 1);
+            //May be needed. Testing required.
+            //loopHappened = 0;
         } while (SimRun == true);
     }
 }

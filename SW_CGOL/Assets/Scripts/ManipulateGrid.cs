@@ -24,7 +24,7 @@ public class ManipulateGrid : MonoBehaviour
     /// </summary>
     /// <param name="state"></param>
     /// <returns></returns>
-    public void GridGenerate(bool[,] state)
+    public int GridGenerate(bool[,] state)
     {
         //After each change destroy unwanted cells
         if (happened == true)
@@ -82,6 +82,8 @@ public class ManipulateGrid : MonoBehaviour
             }
         }
         happened = true;
+        //returns one because in Simulation.cs private IEnumerator PlayLoop() waits for 1 so it can loop itself
+        return 1;
     }
     /// <summary>
     /// Method which counts alive neighbours on board
