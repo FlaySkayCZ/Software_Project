@@ -1,9 +1,9 @@
 # Software_Project
 ```
-**Conway´s Game of Life**
+### Conway´s Game of Life
 
 Explanation of Conway´s game of life can be found on
-[1]
+[Link for wikipedia article][1]
 
 Basic are also provided bellow - copied and with (mostly)bad comments 
 Cell itself doesn't count for its following state
