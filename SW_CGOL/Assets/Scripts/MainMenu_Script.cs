@@ -34,31 +34,33 @@ public class MainMenu_Script : MonoBehaviour
         switch (Dropdown_color.value)
         {
             case 0:
-                var ColorWhite = AliveCell.GetComponent<Color>();
-                ColorWhite.r = 255;
-                ColorWhite.g = 0;
-                ColorWhite.b = 0;
-                ColorWhite.a = 1;
-                Debug.Log("Red");
+                var ColorWhite = AliveCell.GetComponent<Image>();
+                Color white = new Color();
+                white.r = 255;
+                white.g = 255;
+                white.b = 255;
+                white.a = 1;
+                ColorWhite.color = white;
                 break;
 
             case 1:
-                var ColorRed = AliveCell.GetComponent<Color>();
-                ColorRed.r = 255;
-                ColorRed.g = 0;
-                ColorRed.b = 0;
-                ColorRed.a = 1;
-                Debug.Log("Red");
+                var ColorRed = AliveCell.GetComponent<Image>();
+                Color red = new Color();
+                red.r = 255;
+                red.g = 0;
+                red.b = 0;
+                red.a = 1;
+                ColorRed.color = red;
                 break;
 
             case 2:
-                AliveCell.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.blue);
-                Debug.Log("Blue");
-                var ColorBlue = AliveCell.GetComponent<Color>();
-                ColorBlue.r = 0;
-                ColorBlue.g = 0;
-                ColorBlue.b = 255;
-                ColorBlue.a = 1;
+                var ColorBlue = AliveCell.GetComponent<Image>();
+                Color blue = new Color();
+                blue.r = 0;
+                blue.g = 0;
+                blue.b = 255;
+                blue.a = 1;
+                ColorBlue.color = blue;
                 break;
         };
     }
